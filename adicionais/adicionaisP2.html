@@ -1,0 +1,43 @@
+ <script>
+
+    let nomeUsuario = "isaac"
+
+    let nome = prompt('dIgite seu nome:').toLowerCase()
+
+    if (nome === nomeUsuario) {
+
+      console.log(`Bem vindo ${nome}`)
+
+    } else { console.log("Nome usuario errado") }
+
+  </script>
+
+   <script>
+
+    let cidade = "rio de janeiro"
+
+    let cidadeUsuario = prompt('Digite a cidade onde você mora:').toLowerCase()
+
+    if (cidadeUsuario === cidade) {
+
+      console.log(`Você mora no ${cidadeUsuario}`)
+
+    } else { console.log("Cidade do usuario errada") }
+
+  </script>
+
+    <script>
+
+    const cores = [{ nomeCores: "azul" }, { nomeCores: "vermelho" }, {nomeCores: "verde" }]
+
+    const usuario = prompt("Digite uma cor:").toLowerCase()
+
+    const usuarios = cores.find(p => p.nomeCores === usuario.toLowerCase())
+
+    if (usuarios) {
+
+      console.log('Está entre as favoritas')
+
+    } else {console.log('não está entre as favoritas')}
+
+  </script>

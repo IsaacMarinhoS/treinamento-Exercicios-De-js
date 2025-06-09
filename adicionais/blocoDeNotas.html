@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+
+
+  <h1 class="titulo">Lista de tarefas</h1>
+
+  <div class="div-botao">
+    <button class="botao" onclick="salvarTarefa()">adicionar tarefa</button>
+  </div>
+
+  <p class="explicacao-bolinha">
+  Clique na bolinha ao lado da tarefa para marcar como concluída.
+  </p>
+
+  <div class="lista">
+    <ul id="lista-tarefas"></ul>
+  </div>
+
+
+
+  <script>
+
+    function mostrarTarefa() {
+      const lista = document.getElementById("lista-tarefas")
+      lista.innerHTML = ""
+      const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
+
+      tarefas.forEach((tarefa, index) => {
+        const card = document.createElement("div")
+        card.classList.add("card")
+        if (tarefa.concluida) {
+          card.classList.add("concluida");
+        }
+
+        const titulo = document.createElement("h1");
+        titulo.classList.add("titulo-card");
+        titulo.textContent = tarefa.titulo;
+
+        const mensagem = document.createElement("p");
+        mensagem.classList.add("mensagem");
+        mensagem.textContent = tarefa.mensagem;
+
+        card.appendChild(titulo);
+        card.appendChild(mensagem);
+        const container = document.getElementById("lista-tarefas");
+        container.appendChild(card);
+
+        const botaoExcluir = document.createElement("button");
+        botaoExcluir.textContent = "Excluir";
+        botaoExcluir.onclick = function () {
+          excluirTarefa(index);
+        };
+        card.appendChild(titulo)
+        card.appendChild(mensagem)
+        card.appendChild(botaoExcluir)
+        container.appendChild(card)
+
+        const bolinha = document.createElement("span")
+        bolinha.classList.add("bolinha")
+        bolinha.title = "Clique para marcar como concluída";
+
+        if (tarefa.concluida) bolinha.classList.add("ativa")
+        bolinha.onclick = () => marcarComoConcluida(index)
+
+        titulo.prepend(bolinha);
+
+
+
+      })
+    }
+
+    function salvarTarefa() {
+
+      const titulo = prompt("Digite o título da tarefa:");
+      const mensagem = prompt("Digite a descrição da tarefa:");
+
+      if (titulo && mensagem) {
+        const novaTarefa = { titulo, mensagem };
+        const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+        tarefas.push(novaTarefa);
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        mostrarTarefa();
+      } else {
+        alert("Por favor, preencha os dois campos.");
+      }
+    }
+
+    function excluirTarefa(index) {
+      let tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
+      tarefas.splice(index, 1)
+      localStorage.setItem("tarefas", JSON.stringify(tarefas))
+      mostrarTarefa()
+    }
+
+    function marcarComoConcluida(index) {
+      const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+      tarefas[index].concluida = !tarefas[index].concluida;
+      localStorage.setItem("tarefas", JSON.stringify(tarefas));
+      mostrarTarefa();
+    }
+
+
+    window.onload = mostrarTarefa;
+  </script>
+
+
+</body>
+
+<style>
+  body {
+    background-color: rgb(255, 140, 0);
+  }
+
+  .titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+  }
+
+  .botao {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .div-botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lista {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+
+    border-radius: 10px;
+    background-color: aliceblue;
+    width: 700px;
+    height: auto;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+  }
+
+  .titulo-card {
+
+    padding: 20px;
+    margin-left: 1%;
+
+
+  }
+
+  .mensagem {
+    margin-top: -5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    margin-right: 4%;
+    margin-left: 4%;
+
+  }
+
+  .card button {
+
+    margin-bottom: 2%;
+    margin-left: 86%;
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
+  }
+
+  .bolinha {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .bolinha.ativa {
+    background-color: green;
+    border-color: green;
+  }
+
+  .concluida {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+</style>
+
+</html>

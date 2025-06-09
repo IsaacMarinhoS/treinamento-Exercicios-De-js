@@ -1,0 +1,99 @@
+Verificação de entrada
+Se o cliente digitar um número inválido (negativo, zero ou letra), o sistema deve avisar e pedir de novo.
+
+Mensagem final personalizada
+Mostre uma mensagem no fim dizendo se o cliente fez muitos pedidos ou poucos pedidos, baseado na quantidade total de
+itens pedidos.
+
+Função para somar todos os itens pedidos
+Crie uma função chamada contarTotalItens() que retorna o total de unidades pedidas (soma de todas as quantidades).
+
+Erro proposital para você corrigir
+Existe um erro no processarPedido() relacionado à validação de estoque. Encontre e corrija!
+
+<script>
+    const cardapio = [
+        { nome: "hamburguer", preco: 25, estoque: 10 },
+        { nome: "refrigerante", preco: 8, estoque: 15 },
+        { nome: "sorvete", preco: 12, estoque: 12 },
+        { nome: "pizza", preco: 40, estoque: 5 },
+        { nome: "salada", preco: 15, estoque: 8 }
+    ];
+
+    let quantidadeDePedidos = 0
+    const pedidos = [];
+
+    function mostrarCardapio() {
+        console.log("=== CARDÁPIO ===");
+        cardapio.forEach(item => {
+            console.log(`${item.nome} - R$ ${item.preco} (Estoque: ${item.estoque})`);
+        });
+    }
+
+    function processarPedido(cliente) {
+        let quantidade
+        let total = 0;
+        let continuar = "sim";
+
+
+        while (continuar === "sim") {
+            const produtoEscolhido = prompt("Digite o nome do produto:");
+
+
+            const produto = cardapio.find(p => p.nome === produtoEscolhido);
+
+            if (produto) {
+
+                quantidade = prompt("Quantas unidades você deseja?");
+
+                while (isNaN(quantidade) || quantidade.trim() === "" || Number(quantidade) <= 0) {
+                    quantidade = prompt("Digite apenas números maiores que 0. Quantas unidades você deseja?");
+                }
+
+                quantidade = Number(quantidade);
+
+                if (quantidade > 0 && quantidade <= produto.estoque) {
+                    const subtotal = quantidade * produto.preco;
+                    total += subtotal;
+                    produto.estoque -= quantidade;
+
+
+                    pedidos.push({ nome: produto.nome, quantidade, subtotal });
+
+                    quantidadeDePedidos = quantidadeDePedidos + quantidade
+                } else {
+                    console.log("❌ Quantidade inválida ou sem estoque.");
+                }
+
+            } else {
+                console.log("❌ Produto não encontrado.");
+            }
+
+            continuar = prompt("Deseja pedir mais alguma coisa? (sim/não)").toLowerCase();
+
+
+
+        }
+
+
+
+        console.log(`✅ Pedido finalizado para ${cliente}. Total: R$ ${total.toFixed(2)}`);
+    }
+
+    function mostrarResumoFinal() {
+        console.log("=== RESUMO DO PEDIDO ===");
+        pedidos.forEach(p => {
+            console.log(`${p.quantidade}x ${p.nome} - R$ ${p.subtotal.toFixed(2)}`);
+        });
+        if (quantidadeDePedidos > 5) {
+            console.log("Você fez muitos pedidos!")
+        } else { console.log("Você fez poucos pedidos.") }
+        console.log(`Você fez no total ${quantidadeDePedidos} pedidos`)
+    }
+
+    // Execução
+    mostrarCardapio();
+    const nomeCliente = prompt("Digite seu nome:");
+    processarPedido(nomeCliente);
+    mostrarResumoFinal();
+</script>

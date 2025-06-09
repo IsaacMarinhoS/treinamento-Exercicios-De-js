@@ -1,0 +1,112 @@
+
+<script>
+  let valorTotalDaCompra
+  let desejaComprar
+  let valorDesconto = 0
+  let valorSemDesconto
+
+  const itens = [
+    { nome: "camisa", preco: 50, estoque: 15 },
+    { nome: "calça", preco: 100, estoque: 5 },
+    { nome: "boné", preco: 30, estoque: 8 }
+  ]
+
+  const nomeDoCliente = prompt('Qual seu nome')
+  const pergunta = prompt('Digite o nome do produto:')
+  const verificacao = itens.find(p => p.nome === pergunta)
+
+  if (verificacao) {
+    desejaComprar = Number(prompt('Quanto o usuário quer comprar:'))
+
+    if (desejaComprar <= verificacao.estoque) {
+      // valor bruto (sem desconto)
+      valorSemDesconto = desejaComprar * verificacao.preco
+
+      // começa com zero
+      valorDesconto = 0
+
+      // verifica o desconto aplicável
+      if (valorSemDesconto > 100 && valorSemDesconto <= 200) {
+        valorDesconto = (valorSemDesconto * 10) / 100
+      } else if (valorSemDesconto > 200 && valorSemDesconto <= 500) {
+        valorDesconto = (valorSemDesconto * 15) / 100
+      } else if (valorSemDesconto > 500) {
+        valorDesconto = (valorSemDesconto * 20) / 100
+      }
+
+      // aplica o desconto
+      valorTotalDaCompra = valorSemDesconto - valorDesconto
+
+      const estoquerestante = verificacao.estoque - desejaComprar
+
+      // exibe tudo
+      console.log(`Compra aprovada`)
+      console.log(`Nome do cliente: ${nomeDoCliente}`)
+      console.log(`Produto comprado: ${pergunta}`)
+      console.log(`Valor sem desconto: ${valorSemDesconto}`)
+      console.log(`Desconto aplicado: ${valorDesconto}`)
+      console.log(`Valor total com desconto: ${valorTotalDaCompra}`)
+      console.log(`Estoque restante: ${estoquerestante}`)
+
+    } else {
+      console.log('Estoque não suficiente')
+    }
+  } else {
+    console.log('Produto não existente')
+  }
+</script>
+
+
+<script>
+
+    const escola = [
+      { nome: "icaro", primeiranota: 10, segundanota: 8, terceiranota: 9.5, faltas: 3 },
+      { nome: "lucas", primeiranota: 5, segundanota: 3.4, terceiranota: 2.1, faltas: 9 },
+      { nome: "lisa", primeiranota: 1, segundanota: 2.3, terceiranota: 10, faltas: 0 }
+    ]
+
+    const nomeDoAluno = prompt('Qual seu nome:')
+
+    const acharAluno = escola.find(p => p.nome.toLowerCase() === nomeDoAluno.toLowerCase())
+
+
+
+    if (acharAluno) {
+
+      const media = (acharAluno.primeiranota + acharAluno.segundanota + acharAluno.terceiranota) / 3 
+
+      if (acharAluno.faltas <= 10) {
+        
+
+        if (media >= 7) {
+
+
+          console.log(`ola ${acharAluno.nome}`)
+          console.log(`Suas Notas são: ${acharAluno.primeiranota} | ${acharAluno.segundanota} | ${acharAluno.terceiranota}`)
+          console.log(`Sua media é: ${media.toFixed(2)}`)
+          console.log(`Total de faltas : ${acharAluno.faltas}`)
+          console.log("Você esta aprovado")
+
+        } if (media >= 5 && media < 7) {
+
+          console.log(`ola ${acharAluno.nome}`)
+          console.log(`Suas Notas são: ${acharAluno.primeiranota} | ${acharAluno.segundanota} | ${acharAluno.terceiranota}`)
+          console.log(`Sua media é: ${media.toFixed(2)}`)
+          console.log(`Total de faltas : ${acharAluno.faltas}`)
+          console.log("Você esta de recuperação")
+
+        } if (media < 5) {
+
+          console.log(`ola ${acharAluno.nome}`)
+          console.log(`Suas Notas são: ${acharAluno.primeiranota} | ${acharAluno.segundanota} | ${acharAluno.terceiranota}`)
+          console.log(`Sua media é: ${media.toFixed(2)}`)
+          console.log(`Total de faltas : ${acharAluno.faltas}`)
+          console.log("Você esta reprovado")
+
+        }
+
+
+      } else { console.log("Você esta reprovado por excessividade de faltas") }
+    } else { console.log("Não foi possivel achar seu nome na lista") }
+
+  </script>

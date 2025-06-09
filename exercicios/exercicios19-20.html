@@ -1,0 +1,85 @@
+  <script>
+
+    const nomeCliente = prompt("Digite seu nome:")
+    const tipoDeCombustivel = prompt("Digite o tipo de combustivel que voce deseja:").toLowerCase()
+
+
+
+    function posto(nomeCliente, tipoDeCombustivelisac) {
+
+      const tipo = [
+        { nome: "gasolina", preco: 5.39 },
+        { nome: "etanol", preco: 3.99 }
+      ]
+
+      console.log(`Olá ${nomeCliente}`)
+
+      const combustivelEscolhido = tipo.find(p => p.nome === tipoDeCombustivel.toLowerCase())
+
+      if (combustivelEscolhido) {
+
+        console.log(`Você escolheu ${tipoDeCombustivel}`)
+
+        const litros = Number(prompt("Digite quantos litros de combustivel deseja:"))
+
+        if (litros > 0) {
+
+          const resultado = litros * combustivelEscolhido.preco
+
+          console.log(`Total a pagar: ${resultado.toFixed(2)}`)
+
+        } else {
+          console.log("Quantidade de litros inválida!")
+        }
+      } else { console.log("Tipo de combustível inválido!") }
+
+
+    }
+
+    posto(nomeCliente, tipoDeCombustivel)
+
+  </script>
+
+
+<script>
+    const nomeUsuario = prompt("Qual seu nome:");
+
+    const pecasDisponiveis = [
+      { nome: "pastilha de freio", preco: 150 },
+      { nome: "oleo do motor", preco: 90 },
+      { nome: "filtro de ar", preco: 60 },
+      { nome: "bateria", preco: 350 }
+    ];
+
+    console.log("Peças disponíveis:");
+    pecasDisponiveis.forEach(p => {
+      console.log(`${p.nome} - R$${p.preco}`);
+    });
+
+    const escolha = prompt("Qual peça deseja comprar:").toLowerCase();
+
+    function peca(nomeUsuario, escolha) {
+      console.log(`Olá ${nomeUsuario}`);
+
+      const escolhaPeca = pecasDisponiveis.find(p => p.nome === escolha);
+
+      if (escolhaPeca) {
+        const unidades = Number(prompt("Quantas unidades você quer comprar?"));
+        const resultadoUnidades = unidades * escolhaPeca.preco;
+
+        console.log(`Valor total dos produtos comprados: R$${resultadoUnidades}`);
+
+        if (unidades > 2) {
+          const desconto = (resultadoUnidades * 10) / 100;
+          const resultado = resultadoUnidades - desconto;
+
+          console.log(`Valor com desconto: R$${resultado}`);
+        }
+
+      } else {
+        console.log("Peça não encontrada!");
+      }
+    }
+
+    peca(nomeUsuario, escolha);
+  </script>

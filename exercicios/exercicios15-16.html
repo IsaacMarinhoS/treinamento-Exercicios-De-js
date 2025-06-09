@@ -1,0 +1,48 @@
+
+  <script>
+
+    function calcularMedia(n1, n2, n3) {
+      return (n1 + n2 + n3) / 3
+    }
+
+    let mediaFinal = calcularMedia(8, 7, 10);
+    console.log("Média:", mediaFinal);
+
+
+  </script>
+
+  <script>
+
+
+ function calcularIMC(peso , altura) {
+
+  const imc = peso / (altura * altura)
+
+  console.log("Seu IMC é:", imc.toFixed(2));
+
+  if (imc < 18.5 ) {
+
+    console.log ("Abaixo do peso")
+
+  }else if (imc >= 18.5 && imc < 25) {
+
+    console.log ("Peso normal")
+
+  }else if (imc >= 25 && imc < 30) {
+
+    console.log ("Sobrepeso")
+
+  }else if (imc > 30) {
+
+    console.log ("Obesidadel")
+
+  }
+
+  return imc
+
+ }
+
+ let imc = calcularIMC(70, 1.75);
+
+  
+</script>

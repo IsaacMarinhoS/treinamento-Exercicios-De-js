@@ -1,0 +1,57 @@
+<script>
+  const nomeDigitado = prompt("Digite seu nome:");
+  const idadeDigitada = Number(prompt("Digite sua idade:"));
+  const senhaDigitada = prompt("Digite sua senha:");
+
+  function verificarAcesso(nome, idade, senha) {
+    const senhasPermitidas = ["caio", "tiago"]; // lista de senhas válidas
+
+    if (senhasPermitidas.includes(senha)) {
+      console.log(`Olá ${nome}`);
+
+      if (idade >= 18) {
+        console.log("Acesso permitido! Você é maior de idade.");
+      } else {
+        console.log("Acesso negado! Você é menor de idade.");
+      }
+
+    } else {
+      console.log("Senha incorreta! Acesso negado.");
+    }
+  }
+
+  // Chamada da função com os valores que o usuário digitou
+  verificarAcesso(nomeDigitado, idadeDigitada, senhaDigitada);
+</script>
+
+
+  <script>
+
+    let saldo = 0
+
+    const nomeUsuario = prompt("Digite seu nome:")
+    const valorDaCompra = Number(prompt("Digite o valor a pagar:"))
+
+    function compra(nomeUsuario, valorDaCompra, saldo) {
+
+      saldo = 1000
+
+      console.log(`Olá ${nomeUsuario}`)
+      console.log(`Valor da compra: ${valorDaCompra}`)
+
+      if (valorDaCompra <= saldo) {
+
+        const saldoRestante =  saldo - valorDaCompra
+
+        console.log(`Saldp restante: ${saldoRestante}`)
+        console.log("Compra realizada com sucesso!")
+
+      } else { console.log("Saldo insuficiente!") }
+
+
+    }
+
+    compra(nomeUsuario,valorDaCompra)
+
+
+  </script>

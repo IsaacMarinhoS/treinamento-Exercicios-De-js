@@ -1,0 +1,41 @@
+  <script>
+    const produto = [
+      { nome: "café", preço: 10, estoque: 20 },
+      { nome: "arroz", preço: 15, estoque: 20 },
+      { nome: "feijão", preço: 20, estoque: 20 }
+    ]
+
+    let desconto = 0 
+    const nomeUsuario = prompt('Digite seu nome:')
+    const nomeProduto = prompt('Digite o nome do produto que deseja comprar:').toLowerCase()
+
+    const produtoEscolhido = produto.find(p => p.nome === nomeProduto.toLowerCase())
+
+    if (produtoEscolhido) {
+
+      let quantosProdutos = Number(prompt('Quantos itens você quer comprar?'))
+
+      if(quantosProdutos <= produtoEscolhido.estoque) {
+
+        let valorTotal = quantosProdutos * produtoEscolhido.preço
+
+        if(valorTotal >= 100) {
+
+         desconto = (valorTotal * 10) / 100
+         valorTotal = valorTotal - desconto
+
+        }
+
+      console.log(`Compra realizada com sucesso!`)
+      console.log(`Cliente: ${nomeUsuario}`)
+      console.log(`Produto comprado: ${produtoEscolhido.nome}`)
+      console.log(`Quantidade: ${quantosProdutos}`)
+      console.log(`Desconto: R$${desconto}`)
+      console.log(`Valor total: R$${valorTotal}`)
+      console.log(`Estoque restante: ${produtoEscolhido.estoque - quantosProdutos}`)
+
+      }else {onsole.log('Estoque insuficiente!')}
+
+    } else {console.log('Produto não disponível!')}
+
+  </script>

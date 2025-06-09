@@ -1,0 +1,42 @@
+<script>
+
+
+    const nomeProduto = "feijão"
+    const preço = 12
+    let estoque = 2
+
+
+    let resposta = prompt('Deseja adicionar mais estoque? (sim/não)')
+
+    if (resposta === "sim") {
+
+        let adicionarestoque = prompt('quanto de estoque você quer colocar:')
+
+        estoque = estoque + Number(adicionarestoque)
+
+    }
+
+    console.log(`Produto: ${nomeProduto} | Preço: R$${preço} | Estoque atual: ${estoque}`)
+
+</script>
+
+
+<script>
+
+    const livro = "Dora aventureira"
+    const autor = "Irineu"
+    let exemplantes = 30
+
+    let pergunta = prompt("Você deseja adicionar mais exemplantes? (sim/não)")
+
+    if (pergunta === "sim") {
+        let adicionarExemplantes = prompt("Coloque o numeros de exemplates que você deseja adicionar:")
+
+        exemplantes = exemplantes + Number(adicionarExemplantes)
+
+    }
+
+    console.log(`Nome do livro: ${livro} | Nome do autor: ${autor} | Número de exemplares: ${exemplantes}`)
+
+
+</script>

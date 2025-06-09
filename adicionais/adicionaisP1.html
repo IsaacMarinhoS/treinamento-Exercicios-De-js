@@ -1,0 +1,51 @@
+<script>
+    const idade = Number(prompt("Digite sua idade:"))
+
+    if (idade >= 16) {
+        console.log("Você pode votar!")
+    } else { console.log("Você não pode votar!") }
+
+</script>
+
+<script>
+
+    const numero1 = Number(prompt("Digite um numero:"))
+    const numero2 = Number(prompt("digite outro numero:"))
+
+    if (numero1 === numero2) {
+        console.log(`Os numeros ${numero1} e ${numero2} são iguais`)
+    } if (numero1 > numero2) {
+        console.log(`O ${numero1} é maior que o ${numero2}`)
+    } else if (numero2 > numero1) {
+        console.log(`O ${numero2} é maior que o ${numero1}`)
+    }
+</script>
+
+<script>
+
+    const nota = Number(prompt("Digite um numero de 0 a 10:"))
+
+    if (nota >= 0 && nota <= 10) {
+
+        if (nota >= 6) {
+            console.log(`Você esta aprovado!`)
+        } else { console.log("Você esta reprovado") }
+
+    } else { console.log("insira uma nota de 0 a 10") }
+
+
+
+</script>
+
+
+<script>
+
+    const estoque = 20
+
+    const quantidade = Number(prompt("Insira o quanto de produto você deseja retirar?"))
+
+    if (quantidade <= estoque) {
+        console.log("Estoque suficiente")
+    } else { console.log("Estoque insuficiente") }
+
+</script>

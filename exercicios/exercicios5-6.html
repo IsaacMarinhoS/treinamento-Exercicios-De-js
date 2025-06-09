@@ -1,0 +1,39 @@
+<script>
+
+  const nome = prompt('Digite seu nome:')
+  const numero1 = Number(prompt('Digite sua primeira nota:'))
+  const numero2 = Number(prompt('Digite sua segunda nota:'))
+
+  let resultado = (numero1 + numero2) / 2
+
+  if (resultado < 5) {
+    console.log(`Olá ${nome}, sua média é ${resultado.toFixed(2)}. Você está reprovado.`)
+  } else if (resultado >= 5 && resultado < 7) {
+    console.log(`Olá ${nome}, sua média é ${resultado.toFixed(2)}. Você está de recuperação.`)
+  } else if (resultado >= 7) {
+    console.log(`Olá ${nome}, sua média é ${resultado.toFixed(2)}. Você está aprovado!`)
+  }
+</script>
+
+<script>
+
+  let contadorDeParticipantes = 0
+
+
+  const nome1 = prompt("Digite seu nome:")
+  const idade = Number(prompt("Digite sua idade:"))
+  let senha = Math.floor(Math.random() * 10000)
+
+  console.log(`Bem-vindo, ${nome1}! Sua idade é ${idade} e sua senha é ${senha}.`)
+  contadorDeParticipantes++
+
+  let desejaNovaSenha = prompt("Deseja gerar uma nova senha? (sim/nao)")
+
+  if (desejaNovaSenha === "sim") {
+    senha = Math.floor(Math.random() * 10000)
+    console.log(`Sua nova senha é: ${senha}`)
+  }
+
+  console.log(`Total de participantes: ${contadorDeParticipantes}`)
+
+</script>

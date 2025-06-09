@@ -1,0 +1,166 @@
+  <script>
+
+    const cardapioRestaurante = [
+      { nome: "picanha", preco: 35.50, estoque: 40 },
+      { nome: "batata frita", preco: 10, estoque: 30 },
+      { nome: "pudin", preco: 15, estoque: 25 },
+      { nome: "frango", preco: 20, estoque: 45 },
+      { nome: "file de frango", preco: 40, estoque: 30 },
+      { nome: "frango frito", preco: 30, estoque: 20 }
+
+    ]
+
+    function mostrarCardapio() {
+
+      console.log("---------- cardápio ----------")
+
+      cardapio.forEach(p => { console.log(`${p.nome} - R$: ${p.preco}`) })
+
+      console.log("------------------------------")
+
+    }
+    mostrarCardapio();
+
+    const nomeDoCliente = prompt("Digite seu nome:")
+    console.log(`Olá ${nomeDoCliente}`)
+
+    function processarPedido() {
+
+      let precoTotal = 0
+      const nomeDoPedido = prompt("Qual seu pedido:")
+      const verificacao = cardapioRestaurante.find(p => p.nome === nomeDoPedido)
+
+      if (verificacao) {
+
+        const quantidade = Number(prompt("Quantas unidades você deseja:"))
+
+        if (quantidade <= verificacao.estoque) {
+
+          precoTotal = quantidade * verificacao.preco
+
+          console.log(`pedidos: ${nomeDoPedido}`)
+
+          console.log(`Preço final R$: ${precoTotal}`)
+
+          let pedirMais = prompt("Você deseja mais algo? (sim/não)")
+
+
+          while (pedirMais === "sim") {
+
+            const nomeDoPedidoAdicional = prompt("Oque você quer adicionar no seu pedido:")
+
+            const verificacaoAdicional = cardapio.find(p => p.nome === nomeDoPedidoAdicional)
+
+            if (verificacaoAdicional) {
+
+              const quantidadeAdicional = Number(prompt("Quantas unidades você deseja:"))
+
+              if (quantidade <= verificacao.estoque) {
+
+                let precoFinalAdicional = quantidadeAdicional * verificacao.preco
+
+                precoTotal = precoTotal + precoFinalAdicional
+
+                console.log(`pedidos: ${nomeDoPedidoAdicional}`)
+
+                console.log(`Preço final com adicionado R$: ${precoTotal}`)
+
+                pedirMais = prompt("Você deseja mais algo? (sim/não)")
+
+              } else { console.log("Não possuimos a quantidade desejada estoque") }
+
+            } else { console.log("produto não existente") }
+
+          }
+
+        } else { console.log("Não possuimos a quantidade desejada estoque") }
+
+      } else { console.log("produto não existente digite um produto que esteja no cardápio") }
+    }
+
+    processarPedido()
+
+  </script>
+
+  
+
+  <script>
+
+    const cardapio = [
+      { nome: "picanha", preco: 35.50, estoque: 40 },
+      { nome: "batata frita", preco: 10, estoque: 30 },
+      { nome: "pudin", preco: 15, estoque: 25 },
+      { nome: "frango", preco: 20, estoque: 45 },
+      { nome: "file de frango", preco: 40, estoque: 30 },
+      { nome: "frango frito", preco: 30, estoque: 20 }
+    ]
+
+    const pedidos = []
+
+    function mostrarCardapio() {
+
+      console.log("---------- cardápio ----------")
+
+      cardapio.forEach(p => { console.log(`${p.nome} - R$: ${p.preco}`) })
+
+      console.log("------------------------------")
+
+    }
+
+    function processarPedido() {
+      let precoTotal = 0;
+      let continuar = "sim";
+
+      while (continuar === "sim") {
+
+        mostrarCardapio();
+
+        const nomeDoPedido = prompt("Qual seu pedido?");
+        const produto = cardapio.find(p => p.nome === nomeDoPedido);
+
+        if (produto) {
+          const quantidade = Number(prompt("Quantas unidades você deseja?"));
+
+          if (quantidade <= produto.estoque) {
+            const precoDoPedido = quantidade * produto.preco;
+            precoTotal += precoDoPedido;
+
+
+            produto.estoque -= quantidade;
+
+            pedidos.push({
+              nome: produto.nome,
+              quantidade: quantidade,
+              subtotal: precoDoPedido
+            });
+
+          }
+          else {
+            console.log("Quantidade solicitada maior do que o estoque disponível.");
+          }
+        } else {
+          console.log("Produto não encontrado no cardápio.");
+        }
+
+        continuar = prompt("Deseja pedir mais algo? (sim/não)").toLowerCase();
+      }
+
+      console.log(`Pedido finalizado. Total a pagar: R$ ${precoTotal.toFixed(2)}`);
+    }
+
+
+    function mostrarResumoFinal() {
+      console.log("---------- Resumo do Pedido ----------");
+      pedidos.forEach(p => {
+        console.log(`${p.quantidade}x ${p.nome} - Subtotal: R$ ${p.subtotal.toFixed(2)}`);
+      });
+    }
+
+    mostrarCardapio()
+    const nomeDoUsuario = prompt("Digite seu nome:")
+    console.log(`Olá ${nomeDoUsuario}`)
+    processarPedido()
+    mostrarResumoFinal();
+
+
+  </script>

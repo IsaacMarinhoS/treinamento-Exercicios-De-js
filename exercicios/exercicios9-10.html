@@ -1,0 +1,41 @@
+<script>
+    const nomeProduto = prompt('Digite o nome do produto que você quer armazenar?')
+    const preço = Number(prompt('Digite o preço do produto que você quer armazenar?'))
+    let quantidadeAtualEstoque = Number(prompt('Qual a quantidade atual de produtos no estoque?'))
+
+    let resposta = prompt("Você quer adicionar algum produto no estoque? (sim/não)")
+
+    if (resposta === "sim") {
+        let adicionarEstoque = Number(prompt("Quanto de estoque você deseja adicionar?"))
+        quantidadeAtualEstoque = quantidadeAtualEstoque + adicionarEstoque
+    }
+
+    let valorTotalDoEstoque = quantidadeAtualEstoque * preço
+
+    console.log(`Nome do produto: ${nomeProduto} | Preço unitário: ${preço} | Quantidade no estoque: ${quantidadeAtualEstoque} | Valor total do estoque: ${valorTotalDoEstoque.toFixed(2)}`)
+</script>
+
+
+<script>
+    const nomeDoProduto = "grão"
+    const precoUnitario = 10
+    let quantidadeEstoque = 20
+
+    let respostas = prompt('Você deseja vender algum item desse produto? (sim/não)')
+
+    if (respostas === "sim") {
+        let vender = Number(prompt("Quantos itens você quer vender?"))
+
+        if (vender <= quantidadeEstoque) {
+            quantidadeEstoque = quantidadeEstoque - vender
+        } else {
+            console.log('Não tem estoque suficiente')
+        }
+    }
+
+    let valorTotalEstoque = quantidadeEstoque * precoUnitario
+
+    console.log(`Nome do produto: ${nomeDoProduto} | Preço unitário: ${precoUnitario} | Quantidade final no estoque: ${quantidadeEstoque} | Valor total do estoque: ${valorTotalEstoque}`)
+
+
+</script>

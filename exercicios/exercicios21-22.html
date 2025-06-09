@@ -1,0 +1,113 @@
+  <script>
+
+    const nomeDoCliente = prompt("Digite seu nome:")
+    
+
+
+    const lanches = [
+      { nome: "hambúrguer", preço: 25.00 },
+      { nome: "batata frita", preço: 15.00 },
+      { nome: "refrigerante", preço: 8.00 },
+      { nome: "milkshake", preço: 12.00 },
+    ]
+
+    function lanchonete(nomeCliente) {
+
+      console.log(`Bem vindo ${nomeDoCliente}`)
+
+      console.log("LANCHES DISPONIVEIS")
+
+      lanches.forEach(p => { console.log(`${p.nome} - R$ ${p.preço}`) })
+
+      const nomeDoItem = prompt("Qual lanche você quer:")
+      const itemNormalizado = normalizarTexto(nomeDoItem)
+
+      
+
+      const qualPedido = lanches.find(p => normalizarTexto(p.nome) === itemNormalizado)
+
+      if (qualPedido) {
+        const quantasUnidades = prompt("Quantas unidades você quer comprar:")
+
+        console.log(`Seu pedido: ${nomeDoItem}`)
+
+        const numeroDePedidos = quantasUnidades * qualPedido.preço
+
+        if (quantasUnidades >= 3) {
+
+          const contaDesconto = (numeroDePedidos * 10) / 100
+
+          const resultado = numeroDePedidos - contaDesconto
+
+          console.log(`O valor da sua compra com desconto é:R$ ${resultado.toFixed(2)}`)
+        } else { console.log(`O valor do seu pedido é :R$ ${numeroDePedidos.toFixed(2)}`) }
+
+      } else { console.log("Item não disponivel") }
+
+    }
+
+    function normalizarTexto(texto) {
+      return texto.normalize("NFD") // separa acento da letra
+        .replace(/[\u0300-\u036f]/g, "") // remove os acentos
+        .toLowerCase() // tudo minúsculo
+        
+        .replace(/\s+/g, ""); // remove TODOS os espaços (não só os do começo e fim)
+    }
+
+    lanchonete(nomeDoCliente)
+
+
+  </script>
+
+  
+  <script>
+
+    const nomeCliente = prompt("Digite seu nome:")
+
+    const pedido = prompt("Qual seu pedido:")
+
+
+
+    const lanche = [
+      { nome: "hambúrguer", preço: 25.00, estoque: 5 },
+      { nome: "batata frita", preço: 15.00, estoque: 10 },
+      { nome: "refrigerante", preço: 8.00, estoque: 8 },
+      { nome: "milkshake", preço: 12.00, estoque: 4 },
+    ]
+
+
+    function sistemaLanchonete(nomeCliente, pedido) {
+
+      console.log(`olá ${nomeCliente}`)
+
+      console.log(`Cardapio`)
+
+      lanches.forEach(p => { console.log(`${p.nome} - ${p.preço}`) })
+
+      const pedidoFeito = lanche.find(p => p.nome === pedido)
+
+      if (pedidoFeito) {
+
+        const quantasUnidades = Number(prompt("Quantas unidades você quer pedir:"))
+
+        if (quantasUnidades <= pedidoFeito.estoque) {
+
+          console.log(`Seu pedido é : ${pedido} - quantidade ${quantasUnidades}`)
+
+          const precoFinal = quantasUnidades * pedidoFeito.preço
+
+          console.log(`Preço final: R$ ${precoFinal}`)
+
+
+        } else { console.log("seu pedido nao contem estoque") }
+
+
+      } else { console.log("seu pedido não esta disponivel no nosso cardapio") }
+
+
+
+    }
+
+    sistemaLanchonete(nomeCliente, pedido)
+
+  </script>

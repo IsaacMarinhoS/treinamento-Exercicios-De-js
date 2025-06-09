@@ -1,0 +1,55 @@
+  <script>
+
+    const nome = "isaac"
+    const senha = 1234
+
+    const nomeUsuario = prompt('Digite o nome de Usuario:')
+    const senhaUsuario = Number(prompt('Digite a senha:'))
+
+    if (nomeUsuario === nome && senhaUsuario === senha) {
+
+      console.log(`Bem-vindo,${nome}`)
+
+    } else if (nomeUsuario !== nome && senhaUsuario !== senha) {
+      console.log("Usuário e senha incorretos")
+    } else if (nomeUsuario !== nome) {
+      console.log("Usuário não encontrado")
+    } else if (senhaUsuario !== senha) {
+      console.log("Senha incorreta")
+    }
+
+
+
+  </script>
+
+
+ <script>
+
+
+    let preçoDoProduto = 25
+    const estoque = 1000
+    const porcentagemDoDesconto = 10
+
+    const usuario = prompt('Qual seu nome?')
+    const produto = prompt('Qual produto deseja comprar?')
+
+    const quantosProdutos = Number(prompt('Quantos produtos deseja comprar?'))
+
+    if (quantosProdutos <= estoque) {
+
+      preçoDoProduto = preçoDoProduto * quantosProdutos
+
+      if (preçoDoProduto >= 100) {
+
+        desconto = (preçoDoProduto * porcentagemDoDesconto) / 100
+
+        preçoDoProduto = preçoDoProduto - desconto
+
+      }
+
+    } else ('O produto não contem estoque')
+
+    console.log(`Nome do cliente: ${usuario} |Nome do produto: ${produto} |Quantidade comprada: ${quantosProdutos} |Valor total ${preçoDoProduto}`)
+
+
+  </script>
